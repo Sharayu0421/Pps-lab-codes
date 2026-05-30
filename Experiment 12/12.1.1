@@ -1,0 +1,25 @@
+# Initialize empty phone book
+phone_book = {}
+
+# Read number of operations
+n = int(input())
+
+for _ in range(n):
+    command = input().split()
+    action = command[0]
+
+    if action == "ADD":
+        name = command[1]
+        phone_number = command[2]
+        phone_book[name] = phone_number  # add or update
+
+    elif action == "REMOVE":
+        name = command[1]
+        phone_book.pop(name, None)  # remove if exists, else ignore
+
+    elif action == "DISPLAY":
+        if not phone_book:
+            print("No contacts")
+        else:
+            for name in sorted(phone_book):
+                print(f"{name}: {phone_book[name]}")
